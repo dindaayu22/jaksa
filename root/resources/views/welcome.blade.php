@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-		<script src="{{ URL::to('/css/Chart.bundle.js') }}"></script>
+		<script src="{{ URL::to('/assets/Chart.bundle.js') }}"></script>
 		<style>
 			body {
 				margin: 0;
@@ -46,7 +46,7 @@
 				<script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',//line
                 data: {
                     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                     datasets: [{

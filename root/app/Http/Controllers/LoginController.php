@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+class LoginController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -30,7 +30,12 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('login');
+	}
+
+	public function form($user)
+	{
+		return view('form_login', ['user' => $user]);
 	}
 
 }
