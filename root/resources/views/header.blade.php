@@ -56,12 +56,8 @@
                         Dokumen <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-						<li style="text-align: right;"><a href="">Fakultas</a></li>
-						<li style="text-align: right;"><a href="">Jenis Dokumen</a></li>
-                        <li class="divider"></li>
-						<li style="text-align: right;"><a href="">Dokumen Terbaru</a></li>
-						<li style="text-align: right;"><a href="">Dokumen Terbanyak di baca</a></li>
-						<li style="text-align: right;"><a href="">Dokumen Per Tahun</a></li>
+						<li style="text-align: right;"><a href="{{ URL::to('/terbaru') }}">Dokumen Terbaru</a></li>
+						<li style="text-align: right;"><a href="{{ URL::to('/pertahun') }}">Dokumen Per Tahun</a></li>
 					</ul>
                 </li>
                 <li><a href="{{ URL::to('/kontak') }}">Kontak</a></li>

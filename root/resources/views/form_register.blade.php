@@ -1,20 +1,4 @@
 @include('header')
-        <section id="search" style="background-color: #F9F8F5;">
-            <div id="container" style="width: 80%; margin: 0px auto;">
-                <div class="row" style="background-color: #FFF;">
-                    <div class="col-md-12 col-xs-18" style="padding: 25px 50px 0px 50px;;">
-                        <div id="simply-search">
-                            <form action="https://digilib.uns.ac.id/dokumen/search" method="post" accept-charset="utf-8">           
-                                <input type="text" name="keyword" class="input-simple-search" placeholder="Keyword" required="required">
-                                <button type="submit" class="submit-simple-search">Search</button>
-                            </form>                        
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-xs-18" style="background-color: #FFD700; height: 3px; margin-top: 10px;">
-                    </div> 
-                </div> 
-            </div>
-        </section>
         <section id="main" style="background-color: #F9F8F5;">
             <div id="container" style="width: 80%; margin: 0px auto;">
                 <div class="row" style="padding: 0px 20px; background-color:#FFF;">

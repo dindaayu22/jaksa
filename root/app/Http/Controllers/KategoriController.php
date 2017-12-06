@@ -33,4 +33,13 @@ class KategoriController extends Controller {
 		return view('kategori', ['kategori' => $kategori]);
 	}
 
+	public function get_pertahun()
+	{
+		return view('doctahun');
+	}
+
+	public function get_terbaru()
+	{
+		return view('docterbaru');
+	}
 }
