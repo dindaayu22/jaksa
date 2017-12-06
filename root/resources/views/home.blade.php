@@ -28,7 +28,7 @@
     	<div class="col-md-1 col-xs-1 tile" style="background-color: #; border: 0px; margin: 0.83%; padding: 38px 10px 5px 5px; text-align: left; font-size: 15px; color: #FFF;">
         &nbsp<br>&nbsp<br>&nbsp
     </div>
-    <a href="kategori.php">
+    <a href="{{ URL::to('/kategori', ['kategori' => 'kategori1']) }}">
         <div class="col-md-2 col-xs-2 tile" style="background-color: #72AE20; border: 0px; margin: 0.83%; padding: 60px 60px 5px 5px; text-align: left; font-size: 15px; color: #FFF;">
             Kategori<br>1
         </div>

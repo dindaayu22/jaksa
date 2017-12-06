@@ -22,7 +22,10 @@ Route::controllers([
 */
 Route::get('/', 'HomeController@index');
 Route::get('/kontak','KontakController@index');
+Route::get('/upload','UploadController@index');
 Route::get('/login','LoginController@index');
-Route::get('/login/{user}','LoginController@form');
+Route::get('/login/{user}','LoginController@get_form');
 Route::get('/register','RegisterController@index');
-Route::get('/register/{user}','RegisterController@form');
+Route::get('/register/{user}','RegisterController@get_form');
+//Route::get('/berkas/{berkas}')
+Route::get('/kategori/{kategori}','KategoriController@index');

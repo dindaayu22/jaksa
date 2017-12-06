@@ -33,7 +33,7 @@ class LoginController extends Controller {
 		return view('login');
 	}
 
-	public function form($user)
+	public function get_form($user)
 	{
 		return view('form_login', ['user' => $user]);
 	}

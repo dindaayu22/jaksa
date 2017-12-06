@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class RegisterController extends Controller {
+class KategoriController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,14 +28,9 @@ class RegisterController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($kategori)
 	{
-		return view('register');
-	}
-
-	public function get_form($user)
-	{
-		return view('form_register', ['user' => $user]);
+		return view('kategori', ['kategori' => $kategori]);
 	}
 
 }

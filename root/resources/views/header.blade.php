@@ -20,7 +20,7 @@
         <section id="header">
             <div id="container" style="width: 100%; margin: 0px; padding: 0px;">
                 <div class="col-md-2 col-xs-2" style="background-color: #964B00; height: 130px; padding-left: 62px; padding-top: 15px;">
-                    <a><img src="{{ URL::to('/assets/img/sleman.png') }}" height="100px" width="100px"></a>
+                    <a><img src="{{ URL::to('/assets/img/sleman.png') }}" height="110" width="90"></a>
 				</div>
 				<div class="col-md-8 col-xs-8" style="background-color: #964B00; height: 130px; padding-left: 20px; padding-top: 20px; color:#FFF; font-size:32px;">
                     Digital Library<br>Kejaksaan Negeri Sleman
@@ -64,10 +64,11 @@
 						<li style="text-align: right;"><a href="">Dokumen Per Tahun</a></li>
 					</ul>
                 </li>
-				<li><a href="{{ URL::to('/register') }}">Register</a></li>
-                <li><a href="{{ URL::to('/login') }}">Login</a></li>
-        <!--    <li><a href="https://digilib.uns.ac.id/dokumen/cari">Search</a></li>-->
                 <li><a href="{{ URL::to('/kontak') }}">Kontak</a></li>
+                <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                <li><a href="{{ URL::to('/register') }}">Register</a></li>
+        <!--    <li><a href="https://digilib.uns.ac.id/dokumen/cari">Search</a></li>-->
+                
                     </ul>
         </div>
     </nav>

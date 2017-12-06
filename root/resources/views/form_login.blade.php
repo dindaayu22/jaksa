@@ -24,9 +24,9 @@
                         <div class="body-main">
                             <div class="col-md-12 col-xs-18" style="margin: 20px 0px 10px 0px; padding-bottom: 10px; text-align: center;">
                                 &nbsp<br>&nbsp<br>&nbsp
-                                <h3 style="text-align: center;" style="font: bold;">Masuk Sebagai </h3>
+                                <h3 style="text-align: center;" style="font: bold;">Masuk Sebagai {{ $user }}</h3>
                                 <br>
-                                <table width="500px">
+                                <table width="300px" style="margin: 0 35%">
                                     <tr>
                                         <td height="50">Username </td>
                                         <td><input type="text" name="name" width="200px"></td>
@@ -39,6 +39,7 @@
                                 <br>
                                 <br>
                                 <input type="submit" name="simpan" value="Masuk">
+                                &nbsp<br>&nbsp<br>&nbsp
                             </div>                            
                         </div>
                     </div>

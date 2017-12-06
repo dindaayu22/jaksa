@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-		<script src="{{ URL::to('/assets/Chart.bundle.js') }}"></script>
+		<script src="{{ URL::to('/assets/js/Chart.bundle.js') }}"></script>
 		<style>
 			body {
 				margin: 0;

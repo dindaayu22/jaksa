@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-class RegisterController extends Controller {
+class UploadController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -30,12 +30,7 @@ class RegisterController extends Controller {
 	 */
 	public function index()
 	{
-		return view('register');
-	}
-
-	public function get_form($user)
-	{
-		return view('form_register', ['user' => $user]);
+		return view('upload');
 	}
 
 }
