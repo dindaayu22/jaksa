@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js">
     <head>
-		<meta charset="utf-8">
-		<link rel="Top" href="{{ URL::to('/') }}" />
-		<link rel="Search" href="http://digilib.uns.ac.id/dokumen/search" />
-		<link rel="icon" type="image/png" href="{{ URL::to('/assets/img/sleman.png') }}">
-		<link rel="stylesheet" href="{{ URL::to('/assets/css/style.css') }}">
-		<link rel="stylesheet" href="{{ URL::to('/assets/css/bootstrap.css') }}">
-		<link href="{{ URL::to('/assets/css/css.css') }}" rel="stylesheet" type="text/css">
-		<!-- <link rel="stylesheet" href="https://digilib.uns.ac.id/dist/css/datepicker3.css"> -->
-	<!--link rel="stylesheet" href="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js">
-	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"-->
-		<script type="text/javascript" src="{{ URL::to('/assets/js/jquery.js') }}"></script>
-		<script type="text/javascript" src="{{ URL::to('/assets/js/bootstrap.min.js') }}"></script>
-		<!--<script type="text/javascript" src="https://digilib.uns.ac.id/dist/js/bootstrap-datepicker3.js"></script>-->
-		<title>Digital Library Kejaksaan Sleman</title>
-	</head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/png') }}" href="{{ URL::to('/assets/img/logo-mini.png') }}">
+        <title>Perpustakaan Kejaksaan Sleman</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS
+        ================================================ -->
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/owl.carousel.css')}}">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/bootstrap.min.css')}}">
+        <!-- Font-awesome.min css -->
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/font-awesome.min.css')}}">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/animate.min.css')}}">
+
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/main.css')}}">
+        <!-- Responsive Stylesheet -->
+        <link rel="stylesheet" href="{{ URL::to('/assets/user/css/responsive.css')}}">
+         <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="{{ URL::to('/assets/admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+        <!-- Js -->
+    <script src="{{ URL::to('/assets/user/js/vendor/modernizr-2.6.2.min.js')}}"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="{{ URL::to("/assets/user/js/vendor/jquery-1.10.2.min.js")}}"><\/script>')</script>
+    <script src="{{ URL::to('/assets/user/js/jquery.nav.js')}}"></script>
+   <!-- <script src="js/jquery.sticky.js"></script> -->
+    <script src="{{ URL::to('/assets/user/js/bootstrap.min.js')}}"></script>
+    <script src="{{ URL::to('/assets/user/js/plugins.js')}}"></script>
+    <script src="{{ URL::to('/assets/user/js/wow.min.js')}}"></script>
+    <script src="{{ URL::to('/assets/user/js/main.js')}}"></script>
+    <!-- bootstrap datepicker -->
+<script src="{{ URL::to('/assets/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+    </head>
     <body>
-        <section id="header">
-            <div id="container" style="width: 100%; margin: 0px; padding: 0px;">
-                <div class="col-md-2 col-xs-2" style="background-color: #964B00; height: 130px; padding-left: 62px; padding-top: 15px;">
-                    <a><img src="{{ URL::to('/assets/img/sleman.png') }}" height="110" width="90"></a>
-				</div>
-				<div class="col-md-8 col-xs-8" style="background-color: #964B00; height: 130px; padding-left: 20px; padding-top: 20px; color:#FFF; font-size:32px;">
-                    Digital Library<br>Kejaksaan Negeri Sleman
-				</div>
-				<div class="col-md-2 col-xs-2" style="background-color: #964B00; height: 130px; padding-left: 40px; padding-top: 5px;">
-				</div>
-                <div class="col-md-12 col-xs-18" style="background-color: #FFD700; height: 3px;">
-					
-                </div>
-            </div>
-        </section>
-        <section id="menu">
-            <div id="container" style="width: 100%;">
-                <div class="col-md-12 col-xs-18" style="background-color: #964B00; height: auto; color: #FFF;">
-                    <div class="row">
-                        <div class="col-md-8 col-xs-8">
-                            <!--<div class="top-menu">-->
-    <nav class="navbar navbar-default navbar-right" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" 
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('/') }}">Home</a></li>
-                <li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Dokumen <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-						<li style="text-align: right;"><a href="{{ URL::to('/terbaru') }}">Dokumen Terbaru</a></li>
-						<li style="text-align: right;"><a href="{{ URL::to('/pertahun') }}">Dokumen Per Tahun</a></li>
-					</ul>
-                </li>
-                <li><a href="{{ URL::to('/kontak') }}">Kontak</a></li>
-                <li><a href="{{ URL::to('/login') }}">Login</a></li>
-                <li><a href="{{ URL::to('/register') }}">Register</a></li>
-        <!--    <li><a href="https://digilib.uns.ac.id/dokumen/cari">Search</a></li>-->
-                
-                    </ul>
-        </div>
-    </nav>
-<!--</div>-->                        </div>
+    <!--
+    header-img start 
+    ============================== -->
+    <section id="hero-area" style="background-color: rgb(120, 163, 60);">
+      <img class="img-responsive" src="{{ URL::to('/assets/user/images/header.png')}}" alt="">
+    </section>
+    <!--
+    Header start 
+    ============================== -->
+    <nav id="navigation" style="background-color: rgba(129, 176, 61, 1);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block" style="background-color: rgba(129, 176, 61, 1);">
+                        <nav class="navbar navbar-default">
+                          <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </button>
+
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                <li><a href="{{ URL::to('/')}}">Home</a></li>
+                                <li><a href="{{ URL::to('/dokumen')}}">Dokumen</a></li>
+                                <li><a href="{{ URL::to('/register')}}">Register</a></li>
+                                <li><a href="{{ URL::to('/login')}}">Login</a></li>
+                              </ul>
+                            </div><!-- /.navbar-collapse -->
+                          </div><!-- /.container-fluid -->
+                        </nav>
                     </div>
-                </div>
-                <div class="col-md-12 col-xs-18" style="background-color: #FFD700; height: 3px;">
-                </div>  
-            </div>
-        </section>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </nav><!-- header close -->

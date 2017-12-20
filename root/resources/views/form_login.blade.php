@@ -1,34 +1,27 @@
 @include('header')
-        <section id="main" style="background-color: #F9F8F5;">
-            <div id="container" style="width: 80%; margin: 0px auto;">
-                <div class="row" style="padding: 0px 20px; background-color:#FFF;">
-
-                    <!--    ------------------------------ MAIN PAGE  ---------------------------------------   -->
-                    <div class="col-md-12 col-xs-18">
-                        <div class="body-main">
-                            <div class="col-md-12 col-xs-18" style="margin: 20px 0px 10px 0px; padding-bottom: 10px; text-align: center;">
-                                &nbsp<br>&nbsp<br>&nbsp
-                                <h3 style="text-align: center;" style="font: bold;">Masuk Sebagai {{ $user }}</h3>
-                                <br>
-                                <table width="300px" style="margin: 0 35%">
-                                    <tr>
-                                        <td height="50">Username </td>
-                                        <td><input type="text" name="name" width="200px"></td>
-                                    </tr>
-                                    <tr>
-                                        <td height="50">Password</td>
-                                        <td><input type="password" name="password"></td>
-                                    </tr>
-                                </table>  
-                                <br>
-                                <br>
-                                <input type="submit" name="simpan" value="Masuk">
-                                &nbsp<br>&nbsp<br>&nbsp
-                            </div>                            
-                        </div>
+ <!--
+    CONTACT US  start
+    ============================= -->
+    <section id="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="heading wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">Login Sebagai</h1>
+                        <form>
+                            <h2>Nama</h2>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <input type="name" class="form-control" placeholder="Write your full name here...">
+                            </div>
+                            <h2>Password</h2>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <input type="password" class="form-control" placeholder="Write your password here...">
+                            </div>
+                        </form>
+                        <a class="btn btn-default wow bounceIn" data-wow-duration="500ms" data-wow-delay="1300ms" href="#" role="button">masuk</a>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!--    ------------------------------ END OF MAIN PAGE  ---------------------------------------   -->
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </section><!-- #contact-us close -->
 @include('footer')

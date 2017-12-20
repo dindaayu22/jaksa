@@ -33,9 +33,43 @@ class LoginController extends Controller {
 		return view('login');
 	}
 
+	public function handleLogin(Request $request)
+	{
+		$data = $request->only('username', 'password')
+		    if (Auth::attempt($userdata)) {
+            	 return "Login Berhasil";
+                  } else {               
+                   return Redirect::to('login');
+                  }
+                  return back()->withInput();
+
+	}
+
 	public function get_form($user)
 	{
 		return view('form_login', ['user' => $user]);
 	}
-
-}
+	// public function get_login(){
+	// 	$rules = array(
+ //                        'username'    => 'required|username',
+ //                        'password' => 'required|alphaNum|min:5'
+ //        );
+ //        $validator = Validator::make(Input::all(), $rules);
+ //        if ($validator->fails()) {
+ //                        return Redirect::to('login')
+ //                                        ->withErrors($validator)
+ //                                        ->withInput(Input::except('password'));
+ //        } else {
+ //                        $userdata = array(
+ //                                        'username'   => Input::get('username'),
+ //                                        'password'          => Input::get('password')
+ //                        );
+ //                        if (Auth::attempt($userdata)) {
+ //                                        return Redirect::to('/');
+ //                        } else {               
+ //                                        return Redirect::to('login');
+ //                        }
+ //        }
+//    }
+	
+//}
