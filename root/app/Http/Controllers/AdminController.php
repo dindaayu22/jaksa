@@ -2,10 +2,13 @@
 use DB;
 use Redirect;
 use App\Kategori;
-use App\Http\Request;
+use Illuminate\Http\Request;
 use Validator;
 use Response;
+use Carbon\Carbon;
+use Hash;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 //use App\Users;
 
@@ -78,49 +81,164 @@ class AdminController extends Controller {
 	//user
 	public function get_user()
 	{
+		$result = DB::table('pengguna')
+					->join('user','pengguna.idPengguna','=','user.idPengguna')
+					->get();
+		return view('admin/user', compact('result'));
+	}
+	public function get_form_user($user)
+	{
 		$kota = DB::table('kota')->get();
 		$kecamatan = DB::table('kecamatan')
 					->orderBy('namaKecamatan', 'asc')
 					->get();
-		$result = DB::table('pengguna')
+		$result = DB::table('kota')
+					->join('kecamatan','kota.idKota','=','kecamatan.idkota')
+					->join('pengguna','kecamatan.idKecamatan','=','pengguna.idkecamatan')
 					->join('user','pengguna.idPengguna','=','user.idPengguna')
-					->paginate();
-		// $result->setPath(URL::to('admin/user'));
-		return view('admin/user', compact('result','kota','kecamatan'));
+					->where('idUser',$user)
+					->get();
+		
+		return view('admin/form_user', compact('result','kota','kecamatan','user'));
 	}
-	public function post_user(){
-		DB::table('user')->insert([
-                'namaPengguna' => Input::get('inputNama'),
-                'tanggalLahir' => Input::get('inputTahun').'-'.Input::get('inputBulan').'-'.Input::get('inputTanggal'),
-                'jenisKelamin' => Input::get('inputJenKel'),
-                'noHP' 		   => Input::get('inputNoTelepon'),
-                'alamat'       => Input::get('inputAlamat'),
+	public function post_form_user(){
+		DB::table('pengguna')->insert([
+                'namaPengguna' => Input::get('namaPengguna'),
+                'tanggalLahir' => Carbon::parse(Input::get('tanggalLahir')),
+                'jenisKelamin' => Input::get('jenisKelamin'),
+                'noHP' 		   => Input::get('noHP'),
+                'alamat'       => Input::get('alamat'),
                 'idKecamatan'  => Input::get('inputKecamatan'),
-                'createDate'   => 6,
-                'updateDate'   => 10.000
+                'createDate'   => date('Y-m-d'),
+                'updateDate'   => date('Y-m-d')
             ]);
-		return Redirect::to('/admin/user')->with('message','Berhasil Menambah Data');
+		$idPengguna = DB::getPdo()->lastInsertId();
+		DB::table('user')->insert([
+				'username' 		=> Input::get('username'),
+				'idPengguna'	=> $idPengguna,
+				'rule'			=> Input::get('rule'),
+				'password'		=> Hash::make(Input::get('password')),
+				'createDate'   => date('Y-m-d'),
+                'updateDate'   => date('Y-m-d')
+			]);
+		return Redirect::to('/admin/user');
 	}
+	public function put_form_user($user){
+		DB::table('pengguna')
+				->where('idPengguna', $user)
+	            ->update([
+                'namaPengguna' => Input::get('namaPengguna'),
+                'tanggalLahir' => Carbon::parse(Input::get('tanggalLahir')),
+                'jenisKelamin' => Input::get('jenisKelamin'),
+                'noHP' 		   => Input::get('noHP'),
+                'alamat'       => Input::get('alamat'),
+                'idKecamatan'  => Input::get('inputKecamatan'),
+                'createDate'   => date('Y-m-d'),
+                'updateDate'   => date('Y-m-d')
+            ]);
+		DB::table('user')
+				->where('idUser', $user)
+	            ->update([
+				'username' => Input::get('username'),
+				'rule'		=> Input::get('rule'),
+				'updateDate'   => date('Y-m-d')
+			]);
+		return Redirect::to('/admin/user');
+	}
+	public function get_form_user_pass($user){
+		return view('/admin/form_user_pass',compact('user'));
+	}
+	public function put_form_user_pass($user){
+		
+		DB::table('user')
+				->where('idUser', $user)
+	            ->update([
+				'password'		=> Hash::make(Input::get('password')),
+				'updateDate'   => date('Y-m-d')
+			]);
+		return Redirect::to('/admin/user');
+	}
+
+
 	//dokumen
 	public function get_dokumen()
 	{
-		$kategori = DB::table('kategori')->get();
 		$result = DB::table('kategori')
 					->join('berkas','kategori.idKategori','=','berkas.idKategori')
-					->paginate(10);
+					->get();
 
-		return view('admin/dokumen',compact('result','kategori'));
+		return view('admin/dokumen',compact('result'));
+	}
+	public function get_form_dokumen($dokumen)
+	{
+		$kategori = DB::table('kategori')->get();
+		$result = DB::table('kategori')
+					->join('berkas','kategori.idKategori','=','berkas.idkategori')
+					->where('idBerkas',$dokumen)
+					->get();
+
+		return view('admin/form_dokumen',compact('result','kategori','dokumen'));
+	}
+	public function post_form_dokumen()
+	{
+		DB::table('berkas')->insert([
+                'namaBerkas' 	=> Input::get('namaBerkas'),
+                'idkategori' 	=> Input::get('inputKategori'),
+                'namaAsli' 		=> Input::get('namaBerkas').".pdf",
+                'createDate'	=> date('Y-m-d'),
+                'updateDate'	=> date('Y-m-d')
+    	]);
+		$file->move(storage_path('files/'),Input::get('namaBerkas')."w.pdf");
+		return Redirect::to('/admin/dokumen');
+	}
+	public function put_form_dokumen($dokumen)
+	{
+		$file =DB::table('berkas')
+	    		->where('idBerkas',$dokumen)
+	    		->get();
+	    foreach($file as $files){
+		Storage::move('files/'.$files->namaAsli , 'files/'.Input::get('namaBerkas').'.pdf');
+		}
+		
+		DB::table('berkas')
+				->where('idBerkas', $dokumen)
+	            ->update([
+                'namaBerkas' => Input::get('namaBerkas'),
+                'namaAsli' 		=> Input::get('namaBerkas').'.pdf',
+                'updateDate'	=> date('Y-m-d')
+    	]);
+		return Redirect::to('/admin/dokumen');
 	}
 
 	// kategori
-	public function get_kategori()
+	public function get_kategori(Request $request)
 	{
-		$result = DB::table('kategori')->paginate(10);
+		$result = DB::table('kategori')->get();
 		return view('admin/kategori',compact('result'));
 	}
 	
-	public function post_kategori(Request $request){   
-    	$kategori = App\Kategori::create($request->input());
-    	return response()->json($kategori);
+	public function get_form_kategori($kategori){   
+    	$result = DB::table('kategori')
+    					->where('idKategori',$kategori)
+    					->get();
+    	return view('admin/form_kategori',compact('result','kategori'));
+	}
+
+	public function post_form_kategori(){
+		DB::table('kategori')->insert([
+                'namaKategori' => Input::get('namaKategori'),
+                'createKategori'	=> date('Y-m-d'),
+                'updateKategori'	=> date('Y-m-d')
+    	]);
+		return Redirect::to('/admin/kategori');
+	}
+	public function put_form_kategori($kategori){
+		DB::table('kategori')
+	            ->where('idKategori', $kategori)
+	            ->update([
+	            	'namaKategori' => Input::get('namaKategori'),
+	            	'updateKategori'	=> date('Y-m-d')
+	            	]);
+	    return Redirect::to('/admin/kategori');
 	}
 }

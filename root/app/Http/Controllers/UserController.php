@@ -1,6 +1,14 @@
 <?php namespace App\Http\Controllers;
-
 use DB;
+use Redirect;
+use App\Kategori;
+use Illuminate\Http\Request;
+use Validator;
+use Response;
+use Carbon\Carbon;
+use Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller {
 
@@ -94,7 +102,11 @@ class UserController extends Controller {
 	}
 	public function get_form_register($user)
 	{
-		return view('form_register',compact('user'));
+		$kota = DB::table('kota')->get();
+		$kecamatan = DB::table('kecamatan')
+					->orderBy('namaKecamatan', 'asc')
+					->get();
+		return view('form_register',compact('user','kota','kecamatan'));
 	}
 	public function get_login()
 	{
@@ -103,5 +115,28 @@ class UserController extends Controller {
 	public function get_form_login($user)
 	{
 		return view('form_login',compact('user'));
+	}
+
+	public function post_register(){
+		DB::table('pengguna')->insert([
+                'namaPengguna' => Input::get('namaPengguna'),
+                'tanggalLahir' => Carbon::parse(Input::get('tanggalLahir')),
+                'jenisKelamin' => Input::get('jenisKelamin'),
+                'noHP' 		   => Input::get('noHP'),
+                'alamat'       => Input::get('alamat'),
+                'idKecamatan'  => Input::get('inputKecamatan'),
+                'createDate'   => date('Y-m-d'),
+                'updateDate'   => date('Y-m-d')
+            ]);
+		$idPengguna = DB::getPdo()->lastInsertId();
+		DB::table('user')->insert([
+				'username' 		=> Input::get('username'),
+				'idPengguna'	=> $idPengguna,
+				'password'		=> Hash::make(Input::get('password')),
+				'rule'			=> Input::get('rule'),
+				'createDate'   => date('Y-m-d'),
+                'updateDate'   => date('Y-m-d')
+			]);
+		return Redirect::to('/login/'.Input::get('rule'));
 	}
 }

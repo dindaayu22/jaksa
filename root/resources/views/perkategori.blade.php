@@ -28,7 +28,7 @@
                                         <td>{{$berkas->createDate}}</td>
                                         <td>
                                             <a class="btn btn-social-icon btn-primary btn-xs" href="{{ URL::to('/berkas', ['berkas' => $berkas->idBerkas])}}"><i class="fa fa-folder">Open</i></a>
-                                            <a class="btn btn-social-icon btn-primary btn-xs" href="" type="application/octet-stream" download="{{URL::to('assets/files/'.$berkas->namaAsli)}}"><i class="fa fa-arrow-down"></i>Download</a></td>
+                                            <a class="btn btn-social-icon btn-primary btn-xs" href="" type="application/octet-stream" download="{{storage_path('files/'.$berkas->namaAsli)}}"><i class="fa fa-arrow-down"></i>Download</a></td>
                                     </tr>
 									@endforeach
                                 </thead>

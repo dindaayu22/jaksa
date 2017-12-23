@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block">
-                        <h1 class="heading wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">Login Sebagai</h1>
+                        <h1 class="heading wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">Login Sebagai {{$user}}</h1>
                         <form>
                             <h2>Nama</h2>
                             <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">

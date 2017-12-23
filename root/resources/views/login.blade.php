@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block">
-                        <h1><b>Login Sebagai {{$user}}</h1>
+                        <h1><b>Login Sebagai</h1>
                         <br>
                         <div class="owl">
                             <a href="{{ URL::to('/login', ['user' => 'Admin'])}}">

@@ -22,33 +22,11 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Daftar Dokumen</h3>
-                  <small>{{ $result->lastPage() }} Page</small>
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
             </div>
             <!-- /.box-header -->
             <!-- AddButton -->
             <div class="margin">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i>  Tambah</button>
-              <!-- Pages -->
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <!-- <li><a href="">&laquo;</a></li> -->
-                <li><a href="{{ $result->previousPageUrl() }}">&lt;</a></li>
-                <li><a href="#">{{ $result->currentPage() }}</a></li>
-                <li><a href="{{ $result->nextPageUrl() }}">&gt;</a></li>
-                <!-- <li><a href="{{ $result->LastPage() }}">&raquo;</a></li> -->
-
-              </ul>
-
-
-              <!-- /pages -->
+              <a href="{{URL::to('admin/dokumen/form',['dokumen' =>'0'])}}" class="btn btn-success" ><i class="fa fa-plus"></i>  Tambah</a>
             </div>
             <!-- /addbutton -->
             <div class="box-body table-responsive no-padding">
@@ -66,7 +44,7 @@
                   
                   <td>{{$datas->namaKategori}}</td>
                   <td>
-                    <button type="button" class="btn btn-social-icon btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                    <a href="{{URL::to('admin/dokumen/form', ['dokumen' => $datas->idBerkas])}}" class="btn btn-social-icon btn-primary btn-xs open_modal"><i class="fa fa-pencil"></i></a>
                   </td>
                 </tr>
                 @endforeach

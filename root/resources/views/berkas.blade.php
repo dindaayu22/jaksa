@@ -12,10 +12,10 @@
                             <h3> <span>{{$result->namaBerkas}}</span></h3>
                             <label>{{$result->namaKategori}}</label>
                             <label class="pull-right">{{$result->createDate}}</label>
-                            <a class="btn btn-social-icon btn-primary btn-xs" href="" type="application/octet-stream" download="{{URL::to('assets/files/'.$result->namaAsli)}}"><i class="fa fa-arrow-down"></i> Download </a>
+                            <a class="btn btn-social-icon btn-primary btn-xs" href="{{URL::to('root/storage/app/files/'.$result->namaAsli)}}"  type="application/octet-stream" download="{{$result->namaAsli}}"><i class="fa fa-arrow-down"></i> Download </a>
                         </div>
                         <div>
-                            <embed class="col-md-12" height="1200px"src="{{URL::to('assets/files/'.$result->namaAsli)}}#toolbar=0" type='application/pdf'></embed>
+                            <embed class="col-md-12" height="1200px"src="{{URL::to('root/storage/app/files/'.$result->namaAsli)}}#toolbar=0" type='application/pdf'></embed>
                         </div>
                     @endforeach
                     </div>
